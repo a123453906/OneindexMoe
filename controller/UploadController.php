@@ -33,13 +33,6 @@ class UploadController{
 		return view::load('upload')->with('uploading', $uploading)->with('uploaded', $uploaded)->with('message', $message);
 	}
 
-	static function uploadImage($localpath, $remotepath){
-		$this->add_task($localpath, $remotepath);
-		$request = $this->task_request();
-		$request['url'] = substr($request['url'],0,-4).'run';
-		fetch::post($request);
-	}
-
 	//扫描文件夹，添加到任务队列
 	private function scan_dir($localpath, $remotepath){
 		$files = scandir($localpath);
