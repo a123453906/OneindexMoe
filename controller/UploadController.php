@@ -59,9 +59,9 @@ class UploadController{
 			'update_time'=>0,
 			'delete'=>'false',
 	    );
-		// if(!empty($_POST['delete'])){
-		// 	$task['delete'] = $_POST['delete'];
-		// }
+		if(!empty($_POST['delete'])){
+			$task['delete'] = $_POST['delete'];
+		}
 
 	    $uploads = (array)config('@upload');
 	    if(empty($uploads[$remotefile])){
@@ -121,7 +121,7 @@ class UploadController{
 		if(empty($task)){
 			return;
 		}
-		if($task['filesize'] < 10485760){
+		if($task['filesize'] < 4194304){
 			@onedrive::upload($task['remotepath'], file_get_contents($task['localfile']));
 			unset($uploads[$remotepath]);
 				
@@ -171,9 +171,9 @@ class UploadController{
 				unset($uploads[$task['remotepath']]);
 				config('@upload', $uploads);
 				config($task['remotepath'].'@uploaded','success');
-				// if($task['delete'] == 'true'){
-				// 	unlink($task['localfile']);
-				// }
+				if($task['delete'] == 'true'){
+					unlink($task['localfile']);
+				}
 				return;
 			}else{
 			//失败，重新获取信息
