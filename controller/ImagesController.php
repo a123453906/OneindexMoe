@@ -28,7 +28,7 @@ class ImagesController{
 				}
 			}else{
 				file_put_contents('./'.$_FILES["file"]['name'], $content);
-				new UploadController->uploadImage(realpath('./'.$_FILES["file"]['name']), get_absolute_path('/'.$remotepath));
+				new UploadController()->uploadImage(realpath('./'.$_FILES["file"]['name']), get_absolute_path('/'.$remotepath));
 				// $request = UploadController::task_request();
 				// $request['url'] = substr($request['url'],0,-4).'run';
 				// fetch::post($request);
