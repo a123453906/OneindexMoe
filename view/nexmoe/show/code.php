@@ -31,7 +31,7 @@
         <pre id="editor" ><?php echo htmlentities($content);?></pre>
 
         <div class="mdui-textfield">
-	        <label class="mdui-textfield-label">下载地址</label>
+	        <label class="mdui-textfield-label">Download URL</label>
 	        <input class="mdui-textfield-input" type="text" value="<?php e($url);?>"/>
         </div>
     

@@ -10,11 +10,11 @@
 	<br>
 	<!-- 固定标签 -->
 	<div class="mdui-textfield">
-	  <label class="mdui-textfield-label">下载地址</label>
+	  <label class="mdui-textfield-label">Download URL</label>
 	  <input class="mdui-textfield-input" type="text" value="<?php e($url);?>"/>
 	</div>
 	<div class="mdui-textfield">
-	  <label class="mdui-textfield-label">引用地址</label>
+	  <label class="mdui-textfield-label">Referer URL</label>
 	  <textarea class="mdui-textfield-input"><audio src="<?php e($url);?>"></audio></textarea>
 	</div>
 	</div>
