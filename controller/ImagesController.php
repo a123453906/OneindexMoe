@@ -33,7 +33,7 @@ class ImagesController{
 				$request['curl_opt']=[CURLOPT_CONNECTTIMEOUT => 1,CURLOPT_TIMEOUT=>1,CURLOPT_FOLLOWLOCATION=>true];
 				$http_type = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == 'on') ? 'https://' : 'http://';
 				$request['url'] = $http_type.'127.0.0.1'.get_absolute_path(dirname($_SERVER['PHP_SELF'])).'?/admin/upload';
-				$request['post_data'] = 'upload=1&local='.urlencode('./'.$_FILES["file"]['name']).'&remote='.urlencode('/share/'.$remotepath.$filename);
+				$request['post_data'] = 'upload=1&local='.urlencode('./'.$_FILES["file"]['name']).'&remote='.urlencode('/share/'.$remotepath);
 				// UploadController::uploadImage(realpath('./'.$_FILES["file"]['name']), get_absolute_path('/'.$remotepath));
 				// $request = UploadController::task_request();
 				// $request['url'] = substr($request['url'],0,-4).'run';
