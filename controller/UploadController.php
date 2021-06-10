@@ -57,6 +57,7 @@ class UploadController{
 			'filesize'=>onedrive::_filesize($localfile),
 			'upload_type'=>'web',
 			'update_time'=>0,
+			'delete'=>'false',
 	    );
 
 	    $uploads = (array)config('@upload');
@@ -167,6 +168,9 @@ class UploadController{
 				unset($uploads[$task['remotepath']]);
 				config('@upload', $uploads);
 				config($task['remotepath'].'@uploaded','success');
+				if($task['delete'] == 'true'){
+					unlink($task['localfile']);
+				}
 				return;
 			}else{
 			//失败，重新获取信息

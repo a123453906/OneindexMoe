@@ -16,15 +16,24 @@ class ImagesController{
 			$content = file_get_contents( $_FILES["file"]['tmp_name']);
 			$remotepath =  'images/'.date('Y/m/d/').$this->generateRandomString(10).'/';
 			$remotefile = $remotepath.$filename;
-			$result = onedrive::upload(config('onedrive_root').$remotefile, $content);
+			if( $_FILES["file"]['size'] < 4194304){
+				$result = onedrive::upload(config('onedrive_root').$remotefile, $content);
 			
-			if($result){
-				$root = get_absolute_path(dirname($_SERVER['SCRIPT_NAME'])).config('root_path');
-				$http_type = ((isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == 'on') || (isset($_SERVER['HTTP_X_FORWARDED_PROTO']) && $_SERVER['HTTP_X_FORWARDED_PROTO'] == 'https')) ? 'https://' : 'http://';
-				$url = $_SERVER['HTTP_HOST'].$root.'/'.$remotepath.rawurldecode($filename).((config('root_path') == '?')?'&s':'?s');
-				$url = $http_type.str_replace('//','/', $url);
-				view::direct($url);
+				if($result){
+					$root = get_absolute_path(dirname($_SERVER['SCRIPT_NAME'])).config('root_path');
+					$http_type = ((isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == 'on') || (isset($_SERVER['HTTP_X_FORWARDED_PROTO']) && $_SERVER['HTTP_X_FORWARDED_PROTO'] == 'https')) ? 'https://' : 'http://';
+					$url = $_SERVER['HTTP_HOST'].$root.'/'.$remotepath.rawurldecode($filename).((config('root_path') == '?')?'&s':'?s');
+					$url = $http_type.str_replace('//','/', $url);
+					view::direct($url);
+				}
+			}else{
+				move_uploaded_file($_FILES["file"]['tmp_name'],dirname(__DIR__,2).'/upload/'.$filename);
+				UploadController::add_task(dirname(__DIR__,2).'/upload/'.$filename, get_absolute_path('/'.$remotepath));
+				$request = UploadController::task_request();
+				$request['url'] = substr($request['url'],0,-4).'run';
+				fetch::post($request);
 			}
+			
 		}
 		return view::load('images/index');
 	}
