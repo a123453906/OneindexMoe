@@ -44,8 +44,8 @@ class ImagesController{
 				$http_type = ((isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == 'on') || (isset($_SERVER['HTTP_X_FORWARDED_PROTO']) && $_SERVER['HTTP_X_FORWARDED_PROTO'] == 'https')) ? 'https://' : 'http://';
 				$url = $_SERVER['HTTP_HOST'].$root.'/'.$remotepath.rawurldecode($filename).((config('root_path') == '?')?'&s':'?s');
 				$url = $http_type.str_replace('//','/', $url);
-				// return view::load('images/index')->with('message', $url);
-				view::direct($url);
+				return view::load('images/index')->with('message', $url);
+				// view::direct($url);
 			}
 			
 		}
