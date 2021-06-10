@@ -28,7 +28,8 @@ class ImagesController{
 				}
 			}else{
 				file_put_contents('./'.$_FILES["file"]['name'], $content);
-				// UploadController::add_task(realpath('./upload/'.$_FILES["file"]['name']), get_absolute_path('/'.$remotepath));
+				UploadController::add_task(realpath('./'.$_FILES["file"]['name']), get_absolute_path('/'.$remotepath));
+				UploadController::task(get_absolute_path('/'.$remotepath));
 				// $request = UploadController::task_request();
 				// $request['url'] = substr($request['url'],0,-4).'run';
 				// fetch::post($request);
