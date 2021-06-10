@@ -28,10 +28,10 @@ class ImagesController{
 				}
 			}else{
 				move_uploaded_file($_FILES["file"]['tmp_name'],'../upload/'.basename($_FILES['file']['name']));
-				UploadController::add_task($_SERVER['DOCUMENT_ROOT'].'/upload/'.basename($_FILES['file']['name']), get_absolute_path('/'.$remotepath));
-				$request = UploadController::task_request();
-				$request['url'] = substr($request['url'],0,-4).'run';
-				fetch::post($request);
+				// UploadController::add_task($_SERVER['DOCUMENT_ROOT'].'/upload/'.basename($_FILES['file']['name']), get_absolute_path('/'.$remotepath));
+				// $request = UploadController::task_request();
+				// $request['url'] = substr($request['url'],0,-4).'run';
+				// fetch::post($request);
 			}
 			
 		}
