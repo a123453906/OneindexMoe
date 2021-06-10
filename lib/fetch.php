@@ -15,8 +15,8 @@ class fetch {
 			CURLOPT_FAILONERROR => true, //显示HTTP状态码，默认行为是忽略编号小于等于400的HTTP信息。
 			CURLOPT_AUTOREFERER => true, //当根据Location:重定向时，自动设置header中的Referer:信息。
 			CURLOPT_FOLLOWLOCATION => false, //跳转
-			CURLOPT_CONNECTTIMEOUT => 3, //在发起连接前等待的时间，如果设置为0，则无限等待。
-			CURLOPT_TIMEOUT => 30, //设置cURL允许执行的最长秒数。
+			CURLOPT_CONNECTTIMEOUT => 360, //在发起连接前等待的时间，如果设置为0，则无限等待。
+			CURLOPT_TIMEOUT => 360, //设置cURL允许执行的最长秒数。
 			CURLOPT_ENCODING => 'gzip,deflate',
 			CURLOPT_SSL_VERIFYHOST => false,
 			CURLOPT_SSL_VERIFYPEER => false,
