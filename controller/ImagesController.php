@@ -33,13 +33,18 @@ class ImagesController{
 				$request['curl_opt']=[CURLOPT_CONNECTTIMEOUT => 1,CURLOPT_TIMEOUT=>1,CURLOPT_FOLLOWLOCATION=>true];
 				$http_type = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == 'on') ? 'https://' : 'http://';
 				$request['url'] = $http_type.'127.0.0.1'.get_absolute_path(dirname($_SERVER['PHP_SELF'])).'?/admin/upload';
-				$request['post_data'] = 'upload=1&delete=true&local='.urlencode('./'.$_FILES["file"]['name']).'&remote='.urlencode('/share/'.$remotepath.$filename);
+				$request['post_data'] = 'upload=1&delete=true&local='.urlencode('./'.$_FILES["file"]['name']).'&remote='.urlencode(config('onedrive_root').$remotepath.$filename);
 				// UploadController::uploadImage(realpath('./'.$_FILES["file"]['name']), get_absolute_path('/'.$remotepath));
 				// $request = UploadController::task_request();
 				// $request['url'] = substr($request['url'],0,-4).'run';
 				fetch::post($request);
 				// $request['post_data'] = 'begin_task='.urlencode('/share/'.$remotepath.$filename);
 				// fetch::post($request);
+				$root = get_absolute_path(dirname($_SERVER['SCRIPT_NAME'])).config('root_path');
+				$http_type = ((isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == 'on') || (isset($_SERVER['HTTP_X_FORWARDED_PROTO']) && $_SERVER['HTTP_X_FORWARDED_PROTO'] == 'https')) ? 'https://' : 'http://';
+				$url = $_SERVER['HTTP_HOST'].$root.'/'.$remotepath.rawurldecode($filename).((config('root_path') == '?')?'&s':'?s');
+				$url = $http_type.str_replace('//','/', $url);
+				return view::load('images/index')->with('message', $url);
 			}
 			
 		}
