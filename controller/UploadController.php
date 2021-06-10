@@ -33,7 +33,7 @@ class UploadController{
 		return view::load('upload')->with('uploading', $uploading)->with('uploaded', $uploaded)->with('message', $message);
 	}
 
-	function uploadImage($localpath, $remotepath){
+	public function uploadImage($localpath, $remotepath){
 		$this->add_task($localpath, $remotepath);
 		$request = $this->task_request();
 		$request['url'] = substr($request['url'],0,-4).'run';
