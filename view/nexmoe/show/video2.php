@@ -22,7 +22,7 @@ $mpd =  str_replace("thumbnail","videomanifest",$item['thumb'])."&part=index&for
 	  <input class="mdui-textfield-input" type="text" value="<?php e($url);?>"/>
 	</div>
 	<div class="mdui-textfield">
-	  <label class="mdui-textfield-label">Referer URL</label>
+	  <label class="mdui-textfield-label">Quote</label>
 	  <textarea class="mdui-textfield-input"><video><source src="<?php e($url);?>" type="video/mp4"></video></textarea>
 	</div>
 	</div>

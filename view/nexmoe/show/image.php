@@ -13,11 +13,11 @@
 	  <input class="mdui-textfield-input" type="text" value="<?php e($url);?>"/>
 	</div>
 	<div class="mdui-textfield">
-	  <label class="mdui-textfield-label">HTML Referer URL</label>
+	  <label class="mdui-textfield-label">HTML Quote</label>
 	  <input class="mdui-textfield-input" type="text" value="<img src='<?php e($url);?>' />"/>
 	</div>
         <div class="mdui-textfield">
-	  <label class="mdui-textfield-label">Markdown Referer URL</label>
+	  <label class="mdui-textfield-label">Markdown Quote</label>
 	  <input class="mdui-textfield-input" type="text" value="![](<?php e($url);?>)"/>
 	</div>
        

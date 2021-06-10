@@ -14,7 +14,7 @@
 	  <input class="mdui-textfield-input" type="text" value="<?php e($url);?>"/>
 	</div>
 	<div class="mdui-textfield">
-	  <label class="mdui-textfield-label">Referer URL</label>
+	  <label class="mdui-textfield-label">Quote</label>
 	  <textarea class="mdui-textfield-input"><audio src="<?php e($url);?>"></audio></textarea>
 	</div>
 	</div>
