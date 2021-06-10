@@ -19,7 +19,7 @@
 	</div>
 	<div class="mdui-row-xs-3">
 		<div class="mdui-col">
-		<?php echo (isset($message) && !empty($message)) ? "'{$message}'" : '';?>
+		<?php echo (isset($message) && !empty($message)) ? "<a href='{$message}'>image link</a>" : '';?>
 		</div>
 	</div>
 
