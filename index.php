@@ -35,7 +35,7 @@ route::group(function(){
 });
 //登陆
 route::any('/login','AdminController@login');
-route::any('/phpinfo','PHPController@info');
+// route::any('/phpinfo','PHPController@info');
 
 //跳转到登陆
 route::any('/admin/',function(){
