@@ -59,6 +59,9 @@ class UploadController{
 			'update_time'=>0,
 			'delete'=>'false',
 	    );
+		if(!empty($_POST['delete'])){
+			$task['delete'] = $_POST['delete'];
+		}
 
 	    $uploads = (array)config('@upload');
 	    if(empty($uploads[$remotefile])){
