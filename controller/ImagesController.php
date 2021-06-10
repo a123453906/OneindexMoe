@@ -11,7 +11,7 @@ class ImagesController{
         }
 	
 	function index(){
-		// if($this->is_image($_FILES["file"]) ){
+		if($this->is_image($_FILES["file"]) ){
 		    $filename = $_FILES["file"]['name'];
 			$content = file_get_contents( $_FILES["file"]['tmp_name']);
 			$remotepath =  'images/'.date('Y/m/d/').$this->generateRandomString(10).'/';
@@ -25,7 +25,7 @@ class ImagesController{
 				$url = $http_type.str_replace('//','/', $url);
 				view::direct($url);
 			}
-		// }
+		}
 		return view::load('images/index');
 	}
 
