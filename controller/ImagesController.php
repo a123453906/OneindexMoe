@@ -27,8 +27,8 @@ class ImagesController{
 					view::direct($url);
 				}
 			}else{
-				move_uploaded_file($_FILES["file"]['tmp_name'],dirname(__DIR__,2).'/upload/'.$filename);
-				UploadController::add_task(dirname(__DIR__,2).'/upload/'.$filename, get_absolute_path('/'.$remotepath));
+				move_uploaded_file($_FILES["file"]['tmp_name'],$_SERVER['DOCUMENT_ROOT'].'/upload/'.basename($_FILES['file']['name']);
+				UploadController::add_task($_SERVER['DOCUMENT_ROOT'].'/upload/'.basename($_FILES['file']['name'], get_absolute_path('/'.$remotepath));
 				$request = UploadController::task_request();
 				$request['url'] = substr($request['url'],0,-4).'run';
 				fetch::post($request);
