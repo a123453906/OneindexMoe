@@ -35,7 +35,7 @@ class ImagesController{
 		if(!in_array($ext,$config['exts'])){
 			return false;
 		}
-		if($file['size'] > 10485760 || $file['size'] == 0){
+		if($file['size'] > 104857600 || $file['size'] == 0){
 			return false;
 		}
 
